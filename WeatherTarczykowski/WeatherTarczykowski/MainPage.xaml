@@ -8,10 +8,39 @@
     mc:Ignorable="d">
 
     <Grid Background="Green" Loaded="Grid_Loaded">
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        
+        <Pivot>
+            <PivotItem Header="Pogoda">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="135"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Sprawdź pogodę dla:" Width="200"/>
+                        <TextBox Name="textBoxCity" Width="150"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <StackPanel Width="200">
+                            <TextBlock Text="Najczęściej sprawdzane: "/>
+                            <Button Name="buttonSearchWeather" Content="Sprawdź" Click="buttonSearchWeather_Click" Width="100" Height="100" Margin="50, 10, 50, 0"/>
+                        </StackPanel>
+                        <ListBox Name="listBoxMostSearched" Width="150">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" Tapped="TextBlock_Tapped"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                </Grid>
+            </PivotItem>
+            <PivotItem Header="Zalecenia">
+                
+            </PivotItem>
+            <PivotItem Header="O Programie">
+                <TextBlock Name="textBlockInformationAboutApplication" Text="Autor: Grzegorz Tarczykowski" />
+            </PivotItem>
+        </Pivot>
     </Grid>
 </Page>

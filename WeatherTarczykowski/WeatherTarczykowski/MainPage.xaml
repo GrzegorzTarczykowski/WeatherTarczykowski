@@ -8,7 +8,7 @@
     mc:Ignorable="d">
 
     <Grid Background="Green" Loaded="Grid_Loaded">
-        <Pivot>
+        <Pivot Name="pivot">
             <PivotItem Header="Pogoda">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -33,13 +33,36 @@
                             </ListBox.ItemTemplate>
                         </ListBox>
                     </StackPanel>
+                    <StackPanel Grid.Row="2">
+                        <TextBlock Text="{Binding CWeather.CityName}"/>
+                        <TextBlock Text="{Binding CWeather.Temperature}"/>
+                        <TextBlock Text="{Binding CWeather.Humidity}"/>
+                        <TextBlock Text="{Binding CWeather.WindSpeedValue}"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding CWeather.WindDirectionName}"/>
+                            <TextBlock Text="{Binding CWeather.WindDirectionCode}"/>
+                        </StackPanel>
+                        <TextBlock Text="{Binding CWeather.CloudsName}"/>
+                    </StackPanel>
                 </Grid>
             </PivotItem>
-            <PivotItem Header="Zalecenia">
-                
+            <PivotItem Header="Dzień">
+                <StackPanel>
+                    <TextBlock Text="{Binding CWeather.CityName}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel>
+                            <Image Height="150" Width="150" Name="Sunrise" Source="Assets/Image/Sunrise.png"/>
+                            <TextBlock Text="{Binding CWeather.Sunrise}"/>
+                        </StackPanel>
+                        <StackPanel>
+                            <Image Height="150" Width="150" Name="Sunset" Source="Assets/Image/Sunset.png"/>
+                            <TextBlock Text="{Binding CWeather.Sunset}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
             </PivotItem>
             <PivotItem Header="O Programie">
-                <TextBlock Name="textBlockInformationAboutApplication" Text="Autor: Grzegorz Tarczykowski" />
+                <TextBlock Name="textBlockInformationAboutApplication"/>
             </PivotItem>
         </Pivot>
     </Grid>
